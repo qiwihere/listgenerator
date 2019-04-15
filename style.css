@@ -1,0 +1,79 @@
+#field,
+#activity,
+#generate,
+#fields{
+    margin-top: 20px;
+}
+
+.iblock-list-elements-template,
+.iblock-list-container,
+.iblock-field-name-container,
+.iblock-field-detail-container,
+.iblock-list-elements-container,
+.templates-list,
+.iblock-list-elements-selected,
+.templates-form{
+    display: inline-block;
+    vertical-align: top;
+}
+.iblock-list-elements-container,
+.iblock-list-container{
+    width: 20%;
+}
+.iblock-field-name,
+.iblock-list-element{
+    cursor: pointer;
+}
+.iblock-field-name:hover,
+.iblock-list-element:hover{
+    color: dimgray;
+}
+.iblock-list-elements-selected,
+.iblock-field-name-container{
+    width: 35%;
+}
+.iblock-list-elements-template,
+.iblock-field-detail-container{
+    width: 35%;
+}
+.iblock-field-name{
+
+}
+.iblock-field-detail{
+
+}
+.iblock-field-detail-copy-code{
+
+}
+.iblock-field-detail-copy-code:hover{
+    color: green;
+    cursor:pointer;
+}
+
+.templates-list{
+    width: 50%;
+}
+.templates-form{
+    width: 37%;
+}
+.template-list-template-container{
+    margin: 10px;
+}
+.template-list-template-title,
+.template-list-template-download,
+.template-list-template-delete{
+    margin: 5px;
+}
+
+.template-list-template-title{
+
+}
+
+.template-list-template-download{
+
+}
+
+.template-list-template-delete{
+
+
+}

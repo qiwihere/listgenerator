@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Quick start. Local static application</title>
+    </head>
+    <body>
+    <div id="container">
+        <div id = 'tabs'>
+            <div class="btn-group" role="group">
+                <a href="#fields" class="nav-top btn btn-secondary">Доступные поля</a>
+                <a href="#templates" class="nav-top btn btn-secondary">Шаблоны документов</a>
+                <a href="#generate" class="nav-top btn btn-secondary">Создание документа</a>
+                <a href="#activity" class="nav-top btn btn-secondary">Действие бизнес-процесса</a>
+            </div>
+            <div class="tabs_content">
+                <div id="fields">
+                    <div class="iblock-list-container list-group arrow"></div>
+                    <div class="iblock-field-name-container list-group arrow"></div>
+                    <div class="iblock-field-detail-container list-group"></div>
+                </div>
+                <div id="templates">
+                    <div class="templates-list"></div>
+                    <div class="templates-new">
+                        <table class="table table">
+                            <tbody id="clearable-templates-list"></tbody>
+                            <tr>
+                                <form name = "upload_template" enctype="multipart/form-data" method="POST">
+                                    <td>
+                                        
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" name="template_name" required/>
+                                    </td>
+                                    <td>
+                                        <select required class="form-control" id="iblock_selector">
+
+                                        </select>
+                                    </td>
+
+                                    <td>
+                                        <div class="custom-file">
+                                            <input name="template" type="file" accept=".docx" required id="template_file"
+                                                   class="custom-file-input"/>
+                                            <label class="custom-file-label" for="template_file">Выбрать шаблон</label>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <button type="submit" name="submit" class="btn btn-primary">Загрузить</button>
+                                    </td>
+                                </form>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+                <div id="generate">
+                    <div class="iblock-list-elements-container list-group arrow"></div>
+                    <div class="iblock-list-elements-selected list-group arrow"></div>
+                    <div class="iblock-list-elements-template list-group arrow"></div>
+                </div>
+                <div id="activity">
+                    <button type="button" class="btn btn-success" id="add_activity">Добавить</button>
+                    <button type="button" class="btn btn-danger" id="del_activity">Удалить</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+            crossorigin="anonymous">
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="//api.bitrix24.com/api/v1/"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+    <script>
+        BX24.init(function() {
+            render_iblock_list();
+            render_templates_list();
+            render_iblock_list('elements');
+
+            fill_iblock_selector();
+        });
+
+        $(document).ready(function() {
+            $("#tabs a.nav-top").click(function () {
+
+                $("#tabs a.nav-top").removeClass("current");
+                $(this).addClass("current");
+
+                $(".tabs_content>div").hide();
+                t_content = $(this).attr("href");
+                $(t_content).show();
+
+                return false
+            });
+            $("#tabs a.nav-top:first").trigger("click");
+        });
+    </script>
+
+    </body>
+</html>
+
